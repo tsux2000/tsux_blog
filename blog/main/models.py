@@ -18,8 +18,8 @@ class User(models.Model):
     update_date = models.DateField(auto_now = True,)
     user_img = models.SlugField(blank = True,)
 
-    # class Meta:
-    #     abstract = True
+    class Meta:
+        abstract = True
 
 class AdminUser(User):
     admin_user_id = User.user_id
@@ -36,7 +36,6 @@ class Post(models.Model):
     status_id = models.IntegerField()
     title = models.CharField(max_length = 255, unique = True,)
     description = models.TextField(blank = True,)
-    keywords = models.CharField(max_length = 255, blank = True,)
     contents = models.TextField(unique = True,)
     thumbnail = models.SlugField(blank = True,)
     create_date = models.DateField(default = timezone.now)

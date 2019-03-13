@@ -1,7 +1,25 @@
 {% extends 'main/footer.html' %}
 {% load static %}
 {% block main_contents %}
-<div class="">
-  post
+<div class="contents_wrapper">
+  <article class="main_article">
+    <h1>{{ post.title }}</h1>
+    <div class="meta_info">
+      <span>投稿日 : {{ post.create_date }}</span>
+      {% if post.update_date %}
+      <span>最終更新日 : {{ post.update_date }}</span>
+      {% endif %}
+      <a class="author">
+        <img src="{{ post.author_img }}" alt="{{ post.author_name }}">
+        <span>{{ post.author_name }}</span>
+      </a>
+    </div>
+    <div class="thumbnail">
+      <img src="{{ post.thumbnail }}" alt="{{ post.title }}">
+    </div>
+    <div class="contents">
+      {{ post.contents }}
+    </div>
+  </article>
 </div>
 {% endblock %}

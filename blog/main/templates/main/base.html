@@ -1,9 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="ja" dir="ltr">
+<html lang = "ja">
   <head>
-    <meta charset="utf-8">
-    <title>title</title>
+    <meta charset = "utf-8" />
+    <meta http-equiv = "X-UA-Compatible" content = "IE = edge" />
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1" />
+    <meta name = "description" content = "{{ meta.description }}" />
+    <meta name = "robots" content = "{{ meta.robots }}" />
+    <meta property = "og:url" content = "{{ request.build_absolute_uri }}" />
+    <meta property = "og:title" content = "{{ meta.title }}" />
+    <meta property = "og:type" content = "{{ meta.type }}" />
+    <meta property = "og:description" content = "{{ meta.description }}" />
+    <meta property = "og:image" content = "{ url meta.image }" />
+    <meta name = "twitter:card" content = "{{ meta.twitter.card_type }}" />
+    <meta name = "twitter:site" content = "{{ meta.twitter.site_user }}" />
+    <meta property = "og:site_name" content = "{{ meta.site_name }}" />
+    <meta property = "og:locale" content = "{{ meta.locale }}" />
+    <meta property = "fb:app_id" content = "{{ meta.fb.app_id }}" />
+    <meta name = "format-detection" content = "email = no, telephone = no, address = no" />
+    <meta name = "msapplication-TileImage" content = "{{ meta.favicon }}" />
+    <meta name = "msapplication-TileColor" content = "{{ meta.color }}" />
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/import.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <title>{{ meta.title }} | {{ meta.site_name }}</title>
   </head>
 {% block header %}{% endblock %}
 {% block main_contents %}{% endblock %}

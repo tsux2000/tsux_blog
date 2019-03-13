@@ -1,21 +1,17 @@
 from django.urls import path
-from .views import MainView
+from .views import MainView, ListView, PostView,SearchView
 
 urlpatterns = [
     path('', MainView.as_view(), name = 'index'),
-    path('search/', MainView.as_view(), name = 'list'),
-    path('<post_slug>/', MainView.as_view(), name = 'post'),
-    path('archive/<year>/', MainView.as_view(), name = 'list'),
-    path('archive/<year>/<month>/', MainView.as_view(), name = 'list'),
-    path('category/<category_slug>/', MainView.as_view(), name = 'list'),
-    path('category/<category_slug>/subcategory/<subcategory_slug>/', MainView.as_view(), name = 'list'),
-    path('author/', MainView.as_view(), name = 'user_list'),
-    path('author/<author_slug>/', MainView.as_view(), name = 'index'),
-    path('about_blog_q/', MainView.as_view(), name = 'index'),
-    path('sitemap/', MainView.as_view(), name = 'index'),
-    path('policy/', MainView.as_view(), name = 'index'),
-    path('log_in/', MainView.as_view(), name = 'index'),
-    path('sign_up/', MainView.as_view(), name = 'index'),
-    path('my_page/<user_id>/', MainView.as_view(), name = 'index'),
-    path('about_us/', MainView.as_view(), name = 'index'),
+    path('search/', SearchView.as_view(), name = 'search_from_input'),
+    path('search/<search_text>/', ListView.as_view(), name = 'search'),
+    path('<post_slug>/', PostView.as_view(), name = 'post'),
+    path('archive/<year>/', ListView.as_view(), name = 'archive'),
+    path('archive/<year>/<month>/', ListView.as_view(), name = 'archive'),
+    path('category/<category_slug>/', ListView.as_view(), name = 'category'),
+    path('category/<category_slug>/<subcategory_slug>/', ListView.as_view(), name = 'subcategory'),
+    path('author/', ListView.as_view(), name = 'author_list'),
+    path('author/<user_slug>/', PostView.as_view(), name = 'author'),
+    path('my_page/<user_slug>/', PostView.as_view(), name = 'mypage'),
+    path('static/<static_slug>/', PostView.as_view(), name = 'static'),
 ]
